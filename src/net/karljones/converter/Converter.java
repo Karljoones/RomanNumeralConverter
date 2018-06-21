@@ -9,6 +9,8 @@ import java.util.Scanner;
  */
 public class Converter implements RomanNumberalGenerator{
 
+    private static final int MAX_NUM = 3999;
+    private static final int MIN_NUM = 1;
     private int[] numeralSteps = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
     private String[] numerals = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
 
@@ -25,6 +27,7 @@ public class Converter implements RomanNumberalGenerator{
         try {
             return Integer.parseInt(scanner.next());
         } catch (NumberFormatException e){
+            e.printStackTrace();
             System.out.println("Sorry, that does not look like a valid number");
         }
         return -1;
@@ -45,6 +48,7 @@ public class Converter implements RomanNumberalGenerator{
 
         String convertedNumber = "";
 
+        // Loop through the steps of the roman numerals, subtracting steps from the total as it goes.
         for (int i = 0; i < numeralSteps.length ; i++){
             while(number >= numeralSteps[i]){
                 convertedNumber = convertedNumber.concat(numerals[i]);
@@ -61,7 +65,7 @@ public class Converter implements RomanNumberalGenerator{
      * @return true if this is valid, false otherwise.
      */
     public boolean validateInput(int number){
-        if (number > 3999 || number < 1){
+        if (number > MAX_NUM || number < MIN_NUM) {
             System.out.println("Please choose a number between 1 and 3999");
             return false;
         }

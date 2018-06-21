@@ -5,14 +5,14 @@ import net.karljones.converter.Converter;
 public class Main{
 
     public static void main(String[] args) {
-	    System.out.println("Welcome, enter \'0\' to exit");
+        System.out.println("Welcome, enter a number to start. Enter \'0\' to exit");
 
         Converter converter = new Converter();
         int userInput;
 
         do {
             userInput = converter.getUserInput();
-            if (converter.validateInput(userInput) && userInput != 0) {
+            if (userInput != 0 && converter.validateInput(userInput)) {
                 System.out.println(userInput + " = " + converter.generate(userInput));
             }
         } while (userInput != 0);
