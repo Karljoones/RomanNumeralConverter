@@ -9,6 +9,9 @@ import java.util.Scanner;
  */
 public class Converter implements RomanNumberalGenerator{
 
+    private int[] numeralSteps = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+    private String[] numerals = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+
     public Converter(){}
 
     /**
@@ -27,69 +30,29 @@ public class Converter implements RomanNumberalGenerator{
         return -1;
     }
 
+    /**
+     * Generate a roman numeral when given an int to convert from.
+     * @param number to convert into a roman numeral.
+     * @return a string variable of the converted roman numeral.
+     */
     @Override
     public String generate(int number) {
+
         // Check if this is a valid number before continuing.
-        if (!validateInput(number))
+        if (!validateInput(number)) {
             return " is not a valid roman numeral, please try again";
-
-        String romanConversion = "";
-
-
-        while (number >= 1000) {
-            romanConversion += "M";
-            number -= 1000;
-        }
-        while (number >= 900) {
-            romanConversion += "CM";
-            number -= 900;
-        }
-        while (number >= 500) {
-            romanConversion += "D";
-            number -= 500;
-        }
-        while (number >= 400) {
-            romanConversion += "CD";
-            number -= 400;
-        }
-        while (number >= 100) {
-            romanConversion += "C";
-            number -= 100;
-        }
-        while (number >= 90) {
-            romanConversion += "XC";
-            number -= 90;
-        }
-        while (number >= 50) {
-            romanConversion += "L";
-            number -= 50;
-        }
-        while (number >= 40) {
-            romanConversion += "XL";
-            number -= 40;
-        }
-        while (number >= 10) {
-            romanConversion += "X";
-            number -= 10;
-        }
-        while (number >= 9) {
-            romanConversion += "IX";
-            number -= 9;
-        }
-        while (number >= 5) {
-            romanConversion += "V";
-            number -= 5;
-        }
-        while (number >= 4) {
-            romanConversion += "IV";
-            number -= 4;
-        }
-        while (number >= 1){
-            romanConversion += "I";
-            number -= 1;
         }
 
-        return " is \'" + romanConversion + "\'";
+        String convertedNumber = "";
+
+        for (int i = 0; i < numeralSteps.length ; i++){
+            while(number >= numeralSteps[i]){
+                convertedNumber = convertedNumber.concat(numerals[i]);
+                number -= numeralSteps[i];
+            }
+        }
+
+        return " is \'" + convertedNumber + "\'";
     }
 
     /**
@@ -97,7 +60,7 @@ public class Converter implements RomanNumberalGenerator{
      * @param number to check is within parameters.
      * @return true if this is valid, false otherwise.
      */
-    private boolean validateInput(int number){
+    public boolean validateInput(int number){
         if (number > 3999 || number < 1){
             System.out.println("Please choose a number between 1 and 3999");
             return false;
