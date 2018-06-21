@@ -13,7 +13,7 @@ public class Main{
         do {
             userInput = converter.getUserInput();
             if (converter.validateInput(userInput) && userInput != 0) {
-                System.out.println(userInput + converter.generate(userInput));
+                System.out.println(userInput + " = " + converter.generate(userInput));
             }
         } while (userInput != 0);
 

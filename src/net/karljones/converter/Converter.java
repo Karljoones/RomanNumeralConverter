@@ -52,7 +52,7 @@ public class Converter implements RomanNumberalGenerator{
             }
         }
 
-        return " is \'" + convertedNumber + "\'";
+        return convertedNumber;
     }
 
     /**
