@@ -8,7 +8,7 @@ import org.testng.Assert;
 /**
  * Created by KarlJones on 21/06/2018.
  *
- * This is a unit test of the convertor to ensure that the correct outputs are given
+ * This is a unit test of the converter to ensure that the correct outputs are given
  */
 public class ConverterTest {
 

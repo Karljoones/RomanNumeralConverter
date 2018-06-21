@@ -5,7 +5,8 @@ import java.util.Scanner;
 /**
  * Created by KarlJones on 21/06/2018.
  *
- * Class to hold the methods for converting the int into roman numerals.
+ * Class to hold the methods for converting the int into roman numerals. This converts to a roman numeral, as well as validates the
+ * data that the user ads.
  */
 public class Converter implements RomanNumberalGenerator{
 
