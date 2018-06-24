@@ -12,6 +12,8 @@ public class Converter implements RomanNumberalGenerator{
 
     private static final int MAX_NUM = 3999;
     private static final int MIN_NUM = 1;
+
+    // Roman numerals
     private int[] numeralSteps = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
     private String[] numerals = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
 
@@ -28,8 +30,7 @@ public class Converter implements RomanNumberalGenerator{
         try {
             return Integer.parseInt(scanner.next());
         } catch (NumberFormatException e){
-            e.printStackTrace();
-            System.out.println("Sorry, that does not look like a valid number");
+            System.out.println("Sorry, that does not look like a valid number.");
         }
         return -1;
     }
@@ -44,20 +45,20 @@ public class Converter implements RomanNumberalGenerator{
 
         // Check if this is a valid number before continuing.
         if (!validateInput(number)) {
-            return " is not a valid roman numeral, please try again";
+            return " is not a valid roman numeral, please try again.";
         }
 
-        String convertedNumber = "";
+        String convertedRomanNumerals = "";
 
         // Loop through the steps of the roman numerals, subtracting steps from the total as it goes.
         for (int i = 0; i < numeralSteps.length ; i++){
             while(number >= numeralSteps[i]){
-                convertedNumber = convertedNumber.concat(numerals[i]);
+                convertedRomanNumerals = convertedRomanNumerals.concat(numerals[i]);
                 number -= numeralSteps[i];
             }
         }
 
-        return convertedNumber;
+        return convertedRomanNumerals;
     }
 
     /**
